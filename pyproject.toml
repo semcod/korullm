@@ -34,6 +34,12 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = "-p wellmanifest_governance"
+
+[tool.wellmanifest]
+standard = "0.18.10"
+revision = "4e0b7d6d888f1b4771781d25fa977f15725bcce5"
+gate = "project/governance-check.sh"
 
 [tool.ruff]
 target-version = "py312"
