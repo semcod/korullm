@@ -1,0 +1,47 @@
+{
+  "schema": "new-project.intent/v3",
+  "ticket": "ticket-005",
+  "summary": "Configure Goal delivery for korullm",
+  "workstream": "governance",
+  "classification": {
+    "kind": "SERVICE",
+    "priority": "P1",
+    "origin": "requested"
+  },
+  "allowedPaths": ["project/ticket-005/**", "goal.yaml", "TODO.md", "project/TICKETS.md"],
+  "forbiddenPaths": ["project/ticket-*/user-*.md"],
+  "stacks": [],
+  "dependsOn": [],
+  "conflictsWith": [],
+  "integrationTicket": null,
+  "delivery": {
+    "acceptedBaseSha": "88e990a16abf7e8f5485fd9de7ba8daf24a4bc6e",
+    "targetBranch": "main",
+    "outcome": "Record a repeatable Goal configuration used to validate, tag, push and publish korullm.",
+    "nonGoals": ["No package source change", "No LLM behavior change"],
+    "complexity": "XS",
+    "estimatedMinutes": 10,
+    "budgets": {
+      "maxImplementationFiles": 1,
+      "maxAffectedComponents": 1,
+      "maxPublicInterfaceChanges": 0,
+      "maxRuntimeDependencies": 0
+    },
+    "architecture": {
+      "status": "accepted",
+      "decision": "Store Goal configuration as repository-owned governance metadata.",
+      "components": [{"name": "delivery-configuration", "paths": ["goal.yaml"]}],
+      "responsibilityChanges": false,
+      "interfaceChanges": [],
+      "dataChanges": [],
+      "ui": {"impact": "none", "states": [], "evidence": []},
+      "rollback": "Revert goal.yaml."
+    },
+    "runtimeDependencies": [],
+    "validation": [{
+      "criterion": "AC-01",
+      "commands": ["project/governance-check.sh", "goal -a --dry-run"],
+      "evidence": "Goal configuration is accepted by the governance gate and dry-run delivery."
+    }]
+  }
+}
