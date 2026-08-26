@@ -1,0 +1,52 @@
+{
+  "schema": "new-project.intent/v3",
+  "ticket": "ticket-004",
+  "summary": "Adopt governance and enable korullm release gate",
+  "workstream": "integration",
+  "classification": {
+    "kind": "SERVICE",
+    "priority": "P1",
+    "origin": "requested"
+  },
+  "allowedPaths": ["project/ticket-004/**", "pyproject.toml", "TODO.md", "project/TICKETS.md"],
+  "forbiddenPaths": ["project/ticket-*/user-*.md"],
+  "stacks": [],
+  "dependsOn": [],
+  "conflictsWith": [],
+  "integrationTicket": null,
+  "delivery": {
+    "acceptedBaseSha": "974dcc6b252217d092dd2312ce7d0fb36cdea57d",
+    "targetBranch": "main",
+    "outcome": "Install the verified Wellmanifest governance package and bind the Python test lifecycle to its local gate.",
+    "nonGoals": ["No LLM behavior change", "No package publication in this ticket"],
+    "complexity": "S",
+    "estimatedMinutes": 20,
+    "standardAdoption": {
+      "sourceRepository": "wellmanifest/new-project",
+      "fromRevision": null,
+      "toRevision": "4e0b7d6d888f1b4771781d25fa977f15725bcce5"
+    },
+    "budgets": {
+      "maxImplementationFiles": 1,
+      "maxAffectedComponents": 1,
+      "maxPublicInterfaceChanges": 0,
+      "maxRuntimeDependencies": 0
+    },
+    "architecture": {
+      "status": "accepted",
+      "decision": "Use the pinned managed governance package and make pytest load its local gate.",
+      "components": [{"name": "python-package-metadata", "paths": ["pyproject.toml"]}],
+      "responsibilityChanges": false,
+      "interfaceChanges": [],
+      "dataChanges": [],
+      "ui": {"impact": "none", "states": [], "evidence": []},
+      "rollback": "Revert the adoption commit and restore the prior package metadata."
+    },
+    "runtimeDependencies": [],
+    "validation": [{
+      "criterion": "AC-01",
+      "commands": ["project/governance-check.sh", "python -m pytest -q"],
+      "evidence": "The adopted lock validates and pytest loads the governance plugin."
+    }]
+  }
+}
