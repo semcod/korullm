@@ -2,8 +2,8 @@
 
 - **ID**: ticket-004
 - **Owner**: unresolved:human
-- **Status**: IN_PROGRESS
-- **Workflow state**: EDIT
+- **Status**: DONE
+- **Workflow state**: DONE
 - **Created**: 2026-08-26
 
 ## Goal and scope
@@ -13,8 +13,8 @@ lifecycle to the resulting local governance gate.
 
 ## Acceptance criteria
 
-- [ ] AC-01: The managed lock and package metadata are internally consistent.
-- [ ] AC-02: `project/governance-check.sh` and package tests pass.
+- [x] AC-01: The managed lock and package metadata are internally consistent.
+- [x] AC-02: `project/governance-check.sh` and package tests pass after the adoption closes.
 
 ## Participants
 
