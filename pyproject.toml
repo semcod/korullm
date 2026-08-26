@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "korullm"
+version = "0.1.0"
+description = "Policy-aware LLM routing, transports and drive strategies extracted from Koru."
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+license = "Apache-2.0"
+license-files = ["LICENSE*"]
+authors = [{ name = "Semcod" }, { name = "Tom Sapletta", email = "tom@sapletta.com" }]
+keywords = ["llm", "routing", "subllm", "koru", "automation"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Operating System :: OS Independent",
+]
+dependencies = ["subactor-subllm>=1.4.0,<2.0"]
+
+[project.optional-dependencies]
+cursor = ["subactor-subllm[cursor]>=1.4.0,<2.0"]
+test = ["pytest>=8.0,<10.0", "ruff>=0.11,<0.16"]
+
+[project.urls]
+Homepage = "https://github.com/semcod/korullm"
+Issues = "https://github.com/semcod/korullm/issues"
+Repository = "https://github.com/semcod/korullm"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
