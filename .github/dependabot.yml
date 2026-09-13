@@ -1,0 +1,19 @@
+version: 2
+updates:
+- package-ecosystem: uv
+  directory: /
+  schedule:
+    interval: cron
+    cronjob: 31 4 * * *
+    timezone: Europe/Warsaw
+  open-pull-requests-limit: 1
+  versioning-strategy: increase-if-necessary
+  allow:
+  - dependency-name: subactor-subllm
+    dependency-type: all
+  groups:
+    internal-packages:
+      patterns:
+      - subactor-subllm
+  commit-message:
+    prefix: "chore(deps)"
