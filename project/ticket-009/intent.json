@@ -1,0 +1,83 @@
+{
+  "schema": "new-project.intent/v3",
+  "ticket": "ticket-009",
+  "summary": "adopt-wellman-standard-packs",
+  "workstream": "governance",
+  "classification": {
+    "kind": "SERVICE",
+    "priority": "P2",
+    "origin": "health"
+  },
+  "allowedPaths": [
+    "project/ticket-009/**",
+    "project/ticket-005/**",
+    "TODO.md",
+    "project/TICKETS.md",
+    ".governance/standard-packs.json",
+    ".governance/standard_pack_check.py",
+    ".governance/standard-adoption.json"
+  ],
+  "forbiddenPaths": [
+    "project/ticket-*/user-*.md"
+  ],
+  "stacks": [],
+  "dependsOn": [],
+  "conflictsWith": [],
+  "integrationTicket": null,
+  "delivery": {
+    "acceptedBaseSha": "712b92b1da627c4898d88144df6e4b24e9a91055",
+    "targetBranch": "main",
+    "outcome": "Install Wellmanifest standard-packs catalog, validator, and baseline standard-adoption manifest in .governance/.",
+    "nonGoals": [
+      "No runtime or LLM package changes."
+    ],
+    "complexity": "S",
+    "estimatedMinutes": 15,
+    "budgets": {
+      "maxImplementationFiles": 3,
+      "maxAffectedComponents": 1,
+      "maxPublicInterfaceChanges": 0,
+      "maxRuntimeDependencies": 0
+    },
+    "architecture": {
+      "status": "accepted",
+      "decision": "Store standard-pack routing catalog, validator script, and baseline adoption state under .governance/.",
+      "components": [
+        {
+          "name": "governance-standards",
+          "paths": [
+            ".governance/standard-packs.json",
+            ".governance/standard_pack_check.py",
+            ".governance/standard-adoption.json"
+          ]
+        }
+      ],
+      "responsibilityChanges": false,
+      "interfaceChanges": [],
+      "dataChanges": [],
+      "ui": {
+        "impact": "none",
+        "states": [],
+        "evidence": []
+      },
+      "rollback": "Revert the ticket commit."
+    },
+    "runtimeDependencies": [],
+    "validation": [
+      {
+        "criterion": "AC-01",
+        "commands": [
+          "python3 .governance/standard_pack_check.py --root ."
+        ],
+        "evidence": "project/ticket-009/README.md"
+      },
+      {
+        "criterion": "AC-02",
+        "commands": [
+          "bash project/governance-check.sh"
+        ],
+        "evidence": "project/ticket-009/README.md"
+      }
+    ]
+  }
+}
